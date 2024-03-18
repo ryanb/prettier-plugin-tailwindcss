@@ -1034,6 +1034,13 @@ function transformHtmlErb(ast, { env }) {
       return `class="${sortedClasses}"`
     },
   )
+  ast.text = ast.text.replace(
+    /\bclass: "([^"]+)"/g,
+    function (_fullMatch, classes) {
+      const sortedClasses = sortClasses(classes, { env })
+      return `class: "${sortedClasses}"`
+    },
+  )
 }
 
 export { options } from './options.js'
