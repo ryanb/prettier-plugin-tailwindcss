@@ -7,6 +7,7 @@ import * as prettierParserHTML from 'prettier/plugins/html'
 import * as prettierParserMeriyah from 'prettier/plugins/meriyah'
 import * as prettierParserPostCSS from 'prettier/plugins/postcss'
 import * as prettierParserTypescript from 'prettier/plugins/typescript'
+import * as htmlErb from './plugins/html-erb.js'
 
 /**
  * @typedef {object} PluginDetails
@@ -125,9 +126,10 @@ async function loadBuiltinPlugins() {
       acorn: prettierParserAcorn.parsers.acorn,
       meriyah: prettierParserMeriyah.parsers.meriyah,
       __js_expression: prettierParserBabel.parsers.__js_expression,
+      ...htmlErb.parsers,
     },
     printers: {
-      //
+      ...htmlErb.printers,
     },
   }
 }
