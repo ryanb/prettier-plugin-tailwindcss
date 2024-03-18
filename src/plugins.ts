@@ -9,6 +9,7 @@ import * as prettierParserMeriyah from 'prettier/plugins/meriyah'
 import * as prettierParserPostCSS from 'prettier/plugins/postcss'
 import * as prettierParserTypescript from 'prettier/plugins/typescript'
 import { loadIfExists, maybeResolve } from './resolve'
+import * as htmlErb from './plugins/html-erb.js'
 
 interface PluginDetails {
   parsers: Record<string, Parser<any>>
@@ -120,9 +121,10 @@ async function loadBuiltinPlugins(): Promise<PluginDetails> {
       acorn: prettierParserAcorn.parsers.acorn,
       meriyah: prettierParserMeriyah.parsers.meriyah,
       __js_expression: prettierParserBabel.parsers.__js_expression,
+      ...htmlErb.parsers,
     },
     printers: {
-      //
+      ...htmlErb.printers,
     },
   }
 }

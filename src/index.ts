@@ -1026,6 +1026,16 @@ function transformSvelte(ast: any, { env, changes }: TransformerContext) {
   }
 }
 
+function transformHtmlErb(ast, { env }) {
+  ast.text = ast.text.replace(
+    /\bclass="([^"]+)"/g,
+    function (_fullMatch, classes) {
+      const sortedClasses = sortClasses(classes, { env })
+      return `class="${sortedClasses}"`
+    },
+  )
+}
+
 export { options } from './options.js'
 
 export const printers: Record<string, Printer> = (function () {
@@ -1075,6 +1085,8 @@ export const printers: Record<string, Printer> = (function () {
       },
     }
   }
+
+  printers['html-erb-text'] = base.printers['html-erb-text']
 
   return printers
 })()
@@ -1132,6 +1144,8 @@ export const parsers: Record<string, Parser> = {
   __js_expression: createParser('__js_expression', transformJavaScript, {
     staticAttrs: ['class', 'className'],
   }),
+
+  'html-erb': createParser('html-erb', transformHtmlErb, {}),
 
   ...(base.parsers.svelte
     ? {
