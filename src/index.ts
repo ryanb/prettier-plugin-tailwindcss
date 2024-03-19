@@ -1029,16 +1029,16 @@ function transformSvelte(ast: any, { env, changes }: TransformerContext) {
 function transformHtmlErb(ast, { env }) {
   ast.text = ast.text.replace(
     /\bclass="([^"]+?)([<"])/g,
-    function (_fullMatch, classes, endQuote) {
+    function (_fullMatch, classes, ending) {
       const sortedClasses = sortClasses(classes, { env })
-      return `class="${sortedClasses}${endQuote}`
+      return `class="${sortedClasses}${ending}`
     },
   )
   ast.text = ast.text.replace(
-    /\bclass: "([^"]+)"/g,
-    function (_fullMatch, classes) {
+    /\bclass: "([^"]+?)([#"])/g,
+    function (_fullMatch, classes, ending) {
       const sortedClasses = sortClasses(classes, { env })
-      return `class: "${sortedClasses}"`
+      return `class: "${sortedClasses}${ending}`
     },
   )
 }
