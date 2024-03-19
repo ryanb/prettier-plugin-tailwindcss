@@ -2,9 +2,10 @@
 // so we can override it with Tailwind CSS transformer
 export const languages = [
   {
-    name: 'HtmlErb',
+    name: 'html-erb',
     parsers: ['html-erb'],
-    extensions: ['.erb'],
+    extensions: ['.html.erb'],
+    vscodeLanguageIds: ['erb'],
   },
 ]
 

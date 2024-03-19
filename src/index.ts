@@ -16,6 +16,7 @@ import * as recast from 'recast'
 import { getTailwindConfig } from './config.js'
 import { getCustomizations } from './options.js'
 import { loadPlugins } from './plugins.js'
+import * as htmlErb from './plugins/html-erb.js'
 import { sortClasses, sortClassList } from './sorting.js'
 import type {
   Customizations,
@@ -1097,6 +1098,8 @@ export const printers: Record<string, Printer> = (function () {
 
   return printers
 })()
+
+export const languages = [...htmlErb.languages]
 
 export const parsers: Record<string, Parser> = {
   html: createParser('html', transformHtml, {
