@@ -121,6 +121,7 @@ let glimmer = [
 htmlErb = [
   ['<div class="sm:p-0 p-0"></div>', '<div class="p-0 sm:p-0"></div>'],
   ['<%= tag class: "sm:p-0 p-0" %>', '<%= tag class: "p-0 sm:p-0" %>'],
+  ["<%= tag class: 'sm:p-0 p-0' %>", "<%= tag class: 'p-0 sm:p-0' %>"],
   [
     '<div class="sm:p-0 p-0 <%= "m-2" %>"></div>',
     '<div class="p-0 sm:p-0 <%= "m-2" %>"></div>',
