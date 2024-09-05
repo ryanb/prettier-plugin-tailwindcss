@@ -830,7 +830,7 @@ function transformHtmlErb(ast, { env }) {
     },
   )
   ast.text = ast.text.replace(
-    /\bclass:\s+(["'])([^"]+?)([#"'])/g,
+    /\bclass:\s+(["'])([^"]+?)(#\{|["'])/g,
     function (_fullMatch, beginning, classes, ending) {
       const sortedClasses = sortClasses(classes, { env })
       return `class: ${beginning}${sortedClasses}${ending}`

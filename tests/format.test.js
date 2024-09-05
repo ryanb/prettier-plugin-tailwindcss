@@ -130,6 +130,10 @@ htmlErb = [
     '<%= tag class: "sm:p-0 p-0 #{"m-1"}" %>',
     '<%= tag class: "p-0 sm:p-0 #{"m-1"}" %>',
   ],
+  [
+    '<%= tag class: "sm:p-0 p-0 bg-[#FFF]" %>',
+    '<%= tag class: "bg-[#FFF] p-0 sm:p-0" %>',
+  ],
 ]
 
 let tests = {
