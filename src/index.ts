@@ -1027,17 +1027,17 @@ function transformSvelte(ast: any, { env, changes }: TransformerContext) {
   }
 }
 
-function transformHtmlErb(ast, { env }) {
+function transformHtmlErb(ast: any, { env }: any) {
   ast.text = ast.text.replace(
     /\bclass="([^"]+?)([<"])/g,
-    function (_fullMatch, classes, ending) {
+    function (_fullMatch: any, classes: any, ending: any) {
       const sortedClasses = sortClasses(classes, { env })
       return `class="${sortedClasses}${ending}`
     },
   )
   ast.text = ast.text.replace(
     /\bclass:\s+(["'])([^"]+?)(#\{|["'])/g,
-    function (_fullMatch, beginning, classes, ending) {
+    function (_fullMatch: any, beginning: any, classes: any, ending: any) {
       const sortedClasses = sortClasses(classes, { env })
       return `class: ${beginning}${sortedClasses}${ending}`
     },
